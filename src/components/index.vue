@@ -6,6 +6,7 @@
 
 <script>
 import searchBar from "./index/searchBar";
+import data from "../data.json";
 export default {
   name: 'index',
   data () {
@@ -20,5 +21,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-
+ @import "./common/style/reset.css";
 </style>
