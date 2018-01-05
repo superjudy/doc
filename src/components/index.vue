@@ -1,11 +1,13 @@
 <template>
   <div class="index">
     <search-bar></search-bar>
+    <banner></banner>
   </div>
 </template>
 
 <script>
 import searchBar from "./index/searchBar";
+import banner from "./index/banner";
 import data from "../data.json";
 export default {
   name: 'index',
@@ -14,7 +16,8 @@ export default {
     }
   },
   components:{
-    'search-bar': searchBar
+    'search-bar': searchBar,
+    'banner': banner
   }
 }
 </script>
