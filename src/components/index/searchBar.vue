@@ -35,6 +35,7 @@ export default {
   top: 0px;
   left: 0px;
   background: #f87300;
+  z-index: 99;
   .search-icon{
     width:15%;
     color:#ffffff;
@@ -55,7 +56,7 @@ export default {
     input{
       width:96%;
       height:30px;
-      lineheight:30px;
+      line-height:30px;
       border:0;
       outline:0;
       background:#ffffff;

@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "mint-ui": "^2.2.13",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },
@@ -47,8 +48,8 @@
     "ora": "^1.2.0",
     "rimraf": "^2.6.0",
     "uglifyjs-webpack-plugin": "^1.1.1",
-    "less":"^2.7.3",
-    "less-loader":"^4.0.5",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
     "url-loader": "^0.5.8",
     "vue-loader": "^13.3.0",
     "vue-style-loader": "^3.0.1",

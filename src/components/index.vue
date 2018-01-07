@@ -24,5 +24,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
- @import "./common/style/reset.css";
+ .index{
+   width: 100%;
+ }
 </style>
