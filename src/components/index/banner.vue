@@ -5,18 +5,6 @@
         <img :src="value" alt=""/>
       </mt-swipe-item>
     </mt-swipe>
-    <a href="javascript:;">
-      <img :src="bannerBottomImg" alt=""/>
-    </a>
-    <div class="banner-btm">
-      <div class="banner-btm-left">
-        <img :src="bannerBtmLeft" alt=""/>
-      </div>
-      <div class="banner-btm-right">
-        <img :src="bannerBtmRight1" alt=""/>
-        <img :src="bannerBtmRight2" alt=""/>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -27,20 +15,12 @@ export default {
   data () {
     return {
       bannerImg:null,
-      bannerBottomImg:null,
-      bannerBtmLeft:null,
-      bannerBtmRight1:null,
-      bannerBtmRight2:null
     }
   },  
   created:function(){  
     this.bannerImg = data.banner.bannerTop;
-    this.bannerBottomImg = data.banner.img2;
-    this.bannerBtmLeft = data.menu.img1;
-    this.bannerBtmRight1 = data.menu.img2;
-    this.bannerBtmRight2 = data.menu.img3;
   },  
-  methods:{  
+  methods:{
   }  
 }
 </script>
@@ -55,21 +35,5 @@ export default {
       display: block;
       width:100%;
     }
-    a{
-      display: block;
-    }
-    .banner-btm{
-      width: 100%;
-      overflow: hidden;
-      .banner-btm-left{
-        width: 50%;
-        float: left;
-      }
-      .banner-btm-right{
-        width:50%;
-        float: right;
-      }
-    }
 }
-
 </style>

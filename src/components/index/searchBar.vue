@@ -6,7 +6,7 @@
       </span>
     </div>
     <div class="search-ipt">
-      <input type="text">
+      <input type="text" >
     </div>
     <div class="search-pic">
       <span class="icon-search">
