@@ -6,9 +6,7 @@
       </span>
     </div>
     <div class="search-ipt">
-      <router-link to="/search">
-        <input type="text" v-on:focus="searchShow" />
-      </router-link>
+      <input type="text" v-on:focus="searchShow" />
     </div>
     <div class="search-pic">
       <span class="icon-search">

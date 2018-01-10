@@ -5,7 +5,7 @@
         <img src="common/img/back1.svg"/>
       </div>
       <div class="bar-ipt">
-        <input type="text"/>
+        <input type="text" ref="searchValue" @keyup.enter="addHotWord"/>
       </div>
       <div class="bar-quit">取消</div>
     </div>
@@ -15,7 +15,7 @@
     </div>
     
     <div class="hot-words">
-      <a href="javascript:;">热词1</a>
+      <a href="javascript:;" v-for="val in hotWords">{{val}}</a>
     </div>
   </div>  
 </template>
@@ -26,13 +26,18 @@ export default {
   name: 'search',
   data () {
     return {
-      searchImg:null
+      searchImg:null,
+      hotWords:["热词1","热词2","热词3","热词4","热词5"]
     }
   }, 
   created:function(){ 
     this.searchImg = data.searchImg;
   },  
   methods:{
+    addHotWord:function(){
+      const searchValue = this.$refs.searchValue;
+      this.hotWords.unshift(searchValue);
+    }
   }  
 }
 </script>
@@ -101,6 +106,7 @@ export default {
     margin:0 auto;
     text-align:left;
     a{
+      color:#7e8c8d;
       padding:3px 5px;
       border:1px solid #cccccc;
       margin:3px 5px;
