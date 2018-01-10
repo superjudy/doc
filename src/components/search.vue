@@ -1,13 +1,13 @@
 <template>
   <div class="search">
     <div class="top-bar">
-      <div class="bar-back">
+      <div class="bar-back" @click="backLastPage">
         <img src="common/img/back1.svg"/>
       </div>
       <div class="bar-ipt">
-        <input type="text" ref="searchValue" @keyup.enter="addHotWord"/>
+        <input type="text" v-model="searchValue" @keyup.enter="addHotWord" autofocus/>
       </div>
-      <div class="bar-quit">取消</div>
+      <div class="bar-quit" @click="backLastPage">取消</div>
     </div>
 
     <div class="search-img">
@@ -27,15 +27,19 @@ export default {
   data () {
     return {
       searchImg:null,
-      hotWords:["热词1","热词2","热词3","热词4","热词5"]
+      hotWords:["热词1","热词2","热词3","热词4","热词5"],
+      searchValue:''
     }
   }, 
   created:function(){ 
     this.searchImg = data.searchImg;
   },  
   methods:{
+    backLastPage:function(){
+      this.$router.go(-1);
+    },
     addHotWord:function(){
-      const searchValue = this.$refs.searchValue;
+      var searchValue = this.searchValue;
       this.hotWords.unshift(searchValue);
     }
   }  

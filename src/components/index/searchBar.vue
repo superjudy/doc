@@ -66,7 +66,8 @@ export default {
       outline:0;
       background:#ffffff;
       padding-left:2%;
-      margin:4px auto;
+      margin:5px auto;
+      border-radius:5px;
     }
   }
   .search-pic{
