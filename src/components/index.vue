@@ -8,7 +8,6 @@
       <new-goods></new-goods>
       <intelligence-goods></intelligence-goods>
       <new-home-goods></new-home-goods>
-      <search></search>
     </div>
     <mi-footer></mi-footer>
     
@@ -24,7 +23,6 @@ import newGoods from "./index/newGoods";
 import intelligenceGoods from "./index/intelligenceGoods";
 import newHomeGoods from "./index/newHomeGoods";
 import menu from "./index/menu";
-import search from "./index/search";
 import data from "../data.json";
 export default {
   name: 'index',
@@ -41,7 +39,6 @@ export default {
     'intelligence-goods':intelligenceGoods,
     'new-home-goods':newHomeGoods,
     'mi-menu':menu,
-    'search':search
   }
 }
 </script>

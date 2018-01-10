@@ -6,7 +6,9 @@
       </span>
     </div>
     <div class="search-ipt">
-      <input type="text" >
+      <router-link to="/search">
+        <input type="text" v-on:focus="searchShow" />
+      </router-link>
     </div>
     <div class="search-pic">
       <span class="icon-search">
@@ -21,6 +23,11 @@ export default {
   name: 'searchBar',
   data () {
     return {
+    }
+  },
+  methods:{
+    searchShow:function(){
+      this.$router.push({ path: '/search' })
     }
   }
 }

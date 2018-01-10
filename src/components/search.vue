@@ -2,7 +2,7 @@
   <div class="search">
     <div class="top-bar">
       <div class="bar-back">
-        <img src="../common/img/back.svg"/>
+        <img src="common/img/back1.svg"/>
       </div>
       <div class="bar-ipt">
         <input type="text"/>
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import data from "../../data.json";
+import data from "../data.json";
 export default {
   name: 'search',
   data () {
