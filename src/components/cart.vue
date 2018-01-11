@@ -4,7 +4,7 @@
     <!-- cart top part -->
     <div class="cart-bar">
       <div class="bar-back" @click="backLastPage">
-        <img src="common/img/back1.svg"/>
+        <i class="iconfont">&#xe607;</i>
       </div>
       <div class="bar-ipt">购物车</div>
       <div class="bar-quit"></div>
@@ -118,10 +118,8 @@ export default {
       width:15%;
       float:left;
       cursor:pointer;
-      img{
-        width:30%;
-        display:inline-block;
-        margin-top:12px;
+      i{
+        color: #ffffff;
       }
     }
     .bar-ipt{

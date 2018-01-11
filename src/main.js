@@ -7,6 +7,7 @@ import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import { Swipe, SwipeItem } from 'mint-ui';
 import "./components/common/style/reset.css";
+import "./components/common/fonts/font.css";
 
 Vue.use(Mint);
 Vue.component(Swipe.name, Swipe);

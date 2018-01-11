@@ -6,25 +6,25 @@
       <ul>
           <li>
             <router-link to="/index/home">
-              <img src="common/img/footer_home.svg"/>
+              <i class="iconfont active">&#xe601;</i>
               <p class="active">主页</p>
             </router-link>
           </li>
           <li>
             <router-link to="/index/classify">
-              <img src="common/img/footer_lei1.svg"/>
+              <i class="iconfont">&#xe604;</i>
               <p>分类</p>
             </router-link>
           </li>
           <li>
             <router-link to="/index/cart">
-              <img src="common/img/footer_cart1.svg"/>
+              <i class="iconfont">&#xe602;</i>
               <p>购物车</p>
             </router-link>
           </li>
           <li>
             <router-link to="/index/mine">
-              <img src="common/img/footer_me1.svg"/>
+              <i class="iconfont">&#xe603;</i>
               <p>我的</p>
             </router-link>
           </li>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-/* import home from './home'; */
+import home from './home'; 
 import data from "../data.json";
 export default {
   name: 'index',
@@ -44,7 +44,7 @@ export default {
     }
   },
   components:{
-    /* 'home': home */
+    'home': home 
   }
 }
 </script>
@@ -55,7 +55,7 @@ export default {
    width: 100%;
    height:100%;
    overflow:hidden;
-   postion:relative;
+   position:relative;
    .banner-bg{
      width:100%;
      height:100%;
@@ -83,14 +83,20 @@ export default {
             float:left;
             text-align:center;
             cursor:pointer;
+            margin-top: 5px;
             img{
                 width:22%;
                 margin-top:5px;
                 display:inline-block;
             }
+            i{
+              display: block;
+              font-size:18px;
+            }
             p{
                 font-size:10px;
-                color:#a6a6a6;  
+                color:#a6a6a6;
+                margin-top:5px;
             }
             .active{
                 color:#f87205;

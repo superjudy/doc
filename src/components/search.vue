@@ -2,7 +2,7 @@
   <div class="search">
     <div class="top-bar">
       <div class="bar-back" @click="backLastPage">
-        <img src="common/img/back1.svg"/>
+        <i class="iconfont">&#xe607;</i>
       </div>
       <div class="bar-ipt">
         <input type="text" v-model="searchValue" @keyup.enter="addHotWord" autofocus/>
@@ -15,7 +15,7 @@
     </div>
     
     <div class="hot-words">
-      <a href="javascript:;" v-for="val in hotWords">{{val}}</a>
+      <a href="javascript:;" v-for="val in hotWords" :key="val">{{val}}</a>
     </div>
   </div>  
 </template>
@@ -40,6 +40,7 @@ export default {
     },
     addHotWord:function(){
       var searchValue = this.searchValue;
+      if(!searchValue) return;
       this.hotWords.unshift(searchValue);
     }
   }  

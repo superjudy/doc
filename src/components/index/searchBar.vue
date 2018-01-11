@@ -2,7 +2,7 @@
   <div class="search-bar">
     <div class="search-icon">
       <span class="icon-mi">
-        <img src="../common/img/mi.svg"/>
+        <i class="iconfont">&#xe605;</i>
       </span>
     </div>
     <div class="search-ipt">
@@ -10,7 +10,7 @@
     </div>
     <div class="search-pic">
       <span class="icon-search">
-        <img src="../common/img/search1.svg"/>
+        <i class="iconfont">&#xe606;</i>
       </span>
     </div>
   </div>
@@ -49,9 +49,9 @@ export default {
       width:20px;
       height:20px;
       display:inline-block;
-      padding-top:10px;
-      img{
-        width:20px;
+      padding-top:7px;
+      i{
+        font-size: 24px;
       }
     }
   }
@@ -78,8 +78,8 @@ export default {
       height:20px;
       display:inline-block;
       padding-top:10px;
-      img{
-        width:20px;
+      i{
+        color:#ffffff;
       }
     }
   }
