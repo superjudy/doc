@@ -8,7 +8,7 @@
             <li v-for="val in newGoodsLists" :key="val.desc">
                 <img :src="val.imgSrc"/>
                 <p class="p-color">{{val.price}}</p>
-                <p>{{val.title}}</p>
+                <p @click="productDetial(val)">{{val.title}}</p>
                 <p>{{val.desc}}</p>
             </li>
         </ul>
@@ -31,7 +31,13 @@ export default {
     this.newGoodsLists = data.newGoods.newGoodsList;
   },  
   methods:{
-  }  
+      productDetial:function(str){
+          this.$router.push({
+              path:'/productDetial',
+              query:str
+          })
+      }
+  }
 }
 </script>
 

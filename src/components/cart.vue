@@ -18,12 +18,12 @@
               <input type="radio"/>
             </div>
             <div class="cart-img">
-              <img :src="testImg"/>
+              <img :src="cartMsg.imgSrc"/>
             </div>
             <div class="cart-info">
-              <p class="p-title">我是标题，标题，我是标题</p>
+              <p class="p-title">{{cartMsg.title}}</p>
               <p class="p-info">
-                <span class="sp-price">￥5</span>
+                <span class="sp-price">{{cartMsg.price | priceFormat}}</span>
                 <span class="sp-spec">0.5kg</span>
               </p>
             </div>
@@ -34,30 +34,11 @@
 
             <!-- edit part -->
             <div class="cart-edit" style="display:block;">
-              <input type="button" value="+"/>
-              <input type="text" value="1"/>
-              <input type="button" value="-"/>
+              <input type="button" value="+" @click="addNum"/>
+              <input type="text" value="1" v-model="proCount"/>
+              <input type="button" value="-" @click="subtractNum"/>
             </div>
 
-          </li>
-          <li>
-            <div class="cart-check">
-              <input type="radio"/>
-            </div>
-            <div class="cart-img">
-              <img :src="testImg"/>
-            </div>
-            <div class="cart-info">
-              <p class="p-title">我是标题，标题，我是标题</p>
-              <p class="p-info">
-                <span class="sp-price">￥5</span>
-                <span class="sp-spec">0.5kg</span>
-              </p>
-            </div>
-            <div class="cart-num">
-              X
-              <span>1</span>
-            </div>
           </li>
         </ul>
       </div>
@@ -84,15 +65,31 @@ export default {
   name: 'cart',
   data () {
     return {
-      testImg:null
+      cartMsg:'',
+      proCount:1
     }
   },
   created:function(){ 
-    this.testImg = data.starGoods.starGoodsList[0].imgSrc;
+    this.param();
   },  
   methods:{
     backLastPage:function(){
       this.$router.go(-1);
+    },
+    param:function(){
+      let routerParams = this.$route.query;
+      this.cartMsg = routerParams;
+    },
+    addNum:function(){
+      this.proCount++;
+    },
+    subtractNum:function(){
+      this.proCount < 2 ? this.proCount = 1 : this.proCount--;
+    },
+  },
+  filters:{
+    priceFormat:function(price){
+      return '￥' + price;
     }
   },
   components:{

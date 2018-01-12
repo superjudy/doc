@@ -12,7 +12,7 @@
                     <span>{{value.rom}}</span>
                     <span>{{value.color}}</span>
                 </p>
-                <p>{{value.title}}</p>
+                <p @click="productDetial(val)">{{value.title}}</p>
                 <p>{{value.desc}}</p>
             </li>
         </ul>
@@ -35,6 +35,12 @@ export default {
     this.starGoodsList = data.starGoods.starGoodsList;
   },  
   methods:{
+      productDetial:function(str){
+          this.$router.push({
+              path:'/productDetial',
+              query:str
+          })
+      }
   }  
 }
 </script>

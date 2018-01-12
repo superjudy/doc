@@ -6,6 +6,7 @@ import home from '@/components/home'
 import cart from '@/components/cart'
 import mine from '@/components/mine'
 import classify from '@/components/classify'
+import productDetial from '@/components/productDetial'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
       path:'/search',
       name:'search',
       component:search
+    },
+    {
+      path:'/productDetial',
+      name:productDetial,
+      component:productDetial
     }
   ],
   mode: 'history'
