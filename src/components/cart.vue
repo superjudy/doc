@@ -12,33 +12,40 @@
 
     <div class="cart-bg">
       <div class="">
-        <ul>
-          <li>
+        <ul  v-if="cartMsg.length">
+          <li v-for="v in cartMsg" :key="v.index">
             <div class="cart-check">
               <input type="radio"/>
             </div>
             <div class="cart-img">
-              <img :src="cartMsg.imgSrc"/>
+              <img :src="v.imgSrc"/>
             </div>
             <div class="cart-info">
-              <p class="p-title">{{cartMsg.title}}</p>
+              <p class="p-title">{{v.title}}</p>
               <p class="p-info">
-                <span class="sp-price">{{cartMsg.price | priceFormat}}</span>
-                <span class="sp-spec">0.5kg</span>
+                <span class="sp-price">{{v.price | priceFormat}}</span>
+                <span class="sp-spec">{{v.ram}}</span>
+                <span class="sp-spec">{{v.color}}</span>
               </p>
             </div>
-            <div class="cart-num" style="display:none;">
+            <div class="cart-num" style="display:block;">
               X
-              <span>1</span>
+              <span>{{v.proCount}}</span>
             </div>
 
-            <!-- edit part -->
+            <!-- edit part 
             <div class="cart-edit" style="display:block;">
               <input type="button" value="+" @click="addNum"/>
               <input type="text" value="1" v-model="proCount"/>
               <input type="button" value="-" @click="subtractNum"/>
-            </div>
+            </div>-->
 
+          </li>
+         
+        </ul>
+        <ul v-if="!cartMsg.length">
+          <li>
+            暂无数据
           </li>
         </ul>
       </div>
@@ -65,7 +72,7 @@ export default {
   name: 'cart',
   data () {
     return {
-      cartMsg:'',
+      cartMsg:null,
       proCount:1
     }
   },
@@ -77,8 +84,11 @@ export default {
       this.$router.go(-1);
     },
     param:function(){
-      let routerParams = this.$route.query;
-      this.cartMsg = routerParams;
+      // let routerParams = this.$route.query;
+      // this.cartMsg = routerParams;
+      this.cartMsg = this.$store.state.goodsCar;
+      console.log(this.cartMsg);
+      
     },
     addNum:function(){
       this.proCount++;
@@ -125,7 +135,7 @@ export default {
       color:#ffffff;
       font-size:16px;
       line-height:40px;
-      font-wight:blod;
+      font-weight:blod;
       letter-spacing:5px;
     }
     .bar-quit{
@@ -188,7 +198,7 @@ export default {
             outline:none;
             display:inline;
             text-align:center;
-            float:right;
+            float: right;
           }
           input[type="button"]{
             width:18px;
@@ -202,6 +212,10 @@ export default {
           }
         }
       }
+    }
+    ul:last-child{
+      color:#999999;
+      font-size: 14px;
     }
   }
   .cart-count{

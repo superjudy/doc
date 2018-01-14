@@ -19,11 +19,20 @@
         <h4>产品规格</h4>
         <p>
           颜色：
-          <a href="javascript:;" :class='{on:index == colorIndex}' @click="addClassFn(index)" v-for="(value,index) in color" :key="value.id">{{value.text}}</a>
+          <a href="javascript:;" 
+            :class='{on:index == colorIndex}' 
+            @click="addClassFn(index,value.text)" 
+            v-for="(value,index) in color" :key="value.id">
+            {{value.text}}
+          </a>
         </p>
         <p>
           规格：
-          <a href="javascript:;" :class='{on:a == ramIndex}' @click="addClassFn2(a)" v-for="(value,a) in ram" :key="value.id">{{value.text}}</a>
+          <a href="javascript:;" :class='{on:a == ramIndex}' 
+            @click="addClassFn2(a,value.text)" 
+            v-for="(value,a) in ram" :key="value.id">
+            {{value.text}}
+          </a>
         </p>
       </div>
 
@@ -56,7 +65,9 @@ export default {
       color:null,
       ram:null,
       colorIndex:0,
+      colorName:'',
       ramIndex:0,
+      ramName:'',
       proCount:1
     }
   },
@@ -65,7 +76,9 @@ export default {
       this.attrList = data.detail.attrList;
       this.detailList = data.detail.detailList;
       this.color = data.detail.goodsAttr.attr.color;
+      this.colorName = this.color[0].text;
       this.ram = data.detail.goodsAttr.attr.ram;
+      this.ramName = this.ram[0].text;
   },
   components:{
   },
@@ -74,11 +87,13 @@ export default {
       let routerParams = this.$route.query;
       this.proMsg = routerParams;
     },
-    addClassFn:function(index){
+    addClassFn:function(index,v){
       this.colorIndex = index;
+      this.colorName = v;
     },
-    addClassFn2:function(a){
+    addClassFn2:function(a,v){
       this.ramIndex = a;
+      this.ramName = v;
     },
     addNum:function(){
       this.proCount++;
@@ -87,11 +102,21 @@ export default {
       this.proCount < 2 ? this.proCount = 1 : this.proCount--;
     },
     addCart:function(str){
+      
+      var goods = {};
+      goods.title = this.proMsg.title;
+      goods.price = this.proMsg.price;
+      goods.proCount = this.proCount;
+      goods.imgSrc = this.proMsg.imgSrc;
+      goods.color = this.colorName;
+      goods.ram = this.ramName;
+      goods.isShow = true;
+      this.$store.state.goodsCar.push(goods);
+
       this.$router.push({
         path:'/index/cart',
         query:str
       });
-      console.log(str);
     }
   },
   filters:{

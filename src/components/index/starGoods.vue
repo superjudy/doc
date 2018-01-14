@@ -12,7 +12,7 @@
                     <span>{{value.rom}}</span>
                     <span>{{value.color}}</span>
                 </p>
-                <p @click="productDetial(val)">{{value.title}}</p>
+                <p @click="productDetial(value)">{{value.title}}</p>
                 <p>{{value.desc}}</p>
             </li>
         </ul>
