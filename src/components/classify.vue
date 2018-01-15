@@ -10,15 +10,38 @@
     </div>
 
     <div class="cl-pro">
+    <div>
+      <h4>明星产品</h4>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li v-for="v in classifyGoods1">
+          <img :src="v.imgSrc"/>
+        </li>
       </ul>
+    </div>
+    <div>
+      <h4>新品上新</h4>
+      <ul>
+        <li v-for="v in classifyGoods2">
+          <img :src="v.imgSrc"/>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4>智能家居</h4>
+      <ul>
+        <li v-for="v in classifyGoods3">
+          <img :src="v.imgSrc"/>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h4>居家上新</h4>
+      <ul class="ul-class">
+        <li v-for="v in classifyGoods">
+          <img :src="v.imgSrc"/>
+        </li>
+      </ul>
+    </div>
     </div>
   </div>
 </template>
@@ -29,7 +52,17 @@ export default {
   name: 'classify',
   data () {
     return {
+      classifyGoods:null,
+      classifyGoods1:null,
+      classifyGoods2:null,
+      classifyGoods3:null
     }
+  },
+  created:function(){
+    this.classifyGoods = data.newHomeGoods.newHomeGoodsList;
+    this.classifyGoods1 = data.starGoods.starGoodsList;
+    this.classifyGoods2 = data.newGoods.newGoodsList;
+    this.classifyGoods3 = data.intelligenceGoods.intelligenceGoodsList;
   },
   methods:{
     backLastPage:function(){
@@ -79,21 +112,42 @@ export default {
       }
   }
   .cl-pro{
-     ul{
-       width:94%;
-       margin:25px auto 40px;
-       overflow-x:hidden;
-       overflow-y:auto;
-       li{
-         width:17%;
-         height:3.75rem;
-         margin:10px 1.5%;
-         float:left;
-         border:1px solid #cccccc;
-         box-sizing:border-box;
-         border-radius:10px;
+    width:100%;
+    height:100%;
+    margin:20px auto 0;
+    overflow-x:hidden;
+    overflow-y:auto;
+    h4{
+      width:90%;
+      margin:0 auto;
+      color:#333333;
+      height:20px;
+      line-height:20px;
+      font-size:14px;
+      text-align:left;
+      font-weight:bold;
+    }
+    ul{
+      width:94%;
+      margin:10px auto;
+      overflow-x:hidden;
+      overflow-y:auto;
+      li{
+        width:17%;
+        height:3.75rem;
+        margin:10px 1.5%;
+        float:left;
+        border-radius:10px;
+        img{
+          width:100%;
+          display:block;
+          border-radius:10px;
+         }
        }
      }
+    .ul-class{
+      padding-bottom:120px;
+    }
    }
 }
 </style>
