@@ -102,7 +102,6 @@ export default {
       this.proCount < 2 ? this.proCount = 1 : this.proCount--;
     },
     addCart:function(str){
-      
       var goods = {};
       goods.title = this.proMsg.title;
       goods.price = this.proMsg.price;

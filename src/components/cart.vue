@@ -10,10 +10,11 @@
       <div class="bar-quit"></div>
     </div>
 
+    <!-- cart part -->
     <div class="cart-bg">
       <div class="">
         <ul  v-if="cartMsg.length">
-          <li v-for="v in cartMsg" :key="v.index">
+          <li v-for="(v,index) in cartMsg" :key="v.index">
             <div class="cart-check">
               <input type="radio"/>
             </div>
@@ -28,24 +29,28 @@
                 <span class="sp-spec">{{v.color}}</span>
               </p>
             </div>
-            <div class="cart-num" style="display:block;">
+            <div class="cart-num" v-if="v.isShow" @click="changeProNum(index)">
               X
               <span>{{v.proCount}}</span>
             </div>
 
-            <!-- edit part 
-            <div class="cart-edit" style="display:block;">
-              <input type="button" value="+" @click="addNum"/>
-              <input type="text" value="1" v-model="proCount"/>
-              <input type="button" value="-" @click="subtractNum"/>
-            </div>-->
+            <!-- edit part -->
+            <div class="cart-edit" v-if="!v.isShow">
+              <input type="button" value="确定" class="ipt-ok" @click="changeProNum(index)"/>
+              <input type="button" value="+" @click="changeNum(index,'add')"/>
+              <input type="text" v-model="v.proCount"/>
+              <input type="button" value="-" @click="changeNum(index,'minus')"/>
+            </div>
 
+            <div class="delete-btn" @click="deletePro(index)">
+                删除
+            </div>
           </li>
          
         </ul>
         <ul v-if="!cartMsg.length">
           <li>
-            暂无数据
+            购物车空空如也，赶快买买买~
           </li>
         </ul>
       </div>
@@ -73,7 +78,8 @@ export default {
   data () {
     return {
       cartMsg:null,
-      proCount:1
+      proCount:1,
+      isShow:true
     }
   },
   created:function(){ 
@@ -88,14 +94,36 @@ export default {
       // this.cartMsg = routerParams;
       this.cartMsg = this.$store.state.goodsCar;
       console.log(this.cartMsg);
-      
     },
-    addNum:function(){
-      this.proCount++;
+    changeProNum:function(index){
+      for(var i=0;i<this.cartMsg.length;i++){
+        if(i == index){
+          this.cartMsg[i].isShow = !this.cartMsg[i].isShow;
+        }
+      }
     },
-    subtractNum:function(){
-      this.proCount < 2 ? this.proCount = 1 : this.proCount--;
+    changeNum:function(index,type){
+      for(var i=0;i<this.cartMsg.length;i++){
+        if(i == index && type == 'add'){
+          this.cartMsg[i].proCount++;
+        }else if(i == index && type == 'minus'){
+          this.cartMsg[i].proCount < 2 ? this.cartMsg[i].proCount = 1 : this.cartMsg[i].proCount--;
+        }
+      }
     },
+    deletePro:function(index){
+      for(var i=0;i<this.cartMsg.length;i++){
+        if(i == index){
+          this.cartMsg.splice(index,1);
+        }
+      }
+    }
+    // addNum:function(){
+    //   this.proCount++;
+    // },
+    // subtractNum:function(){
+    //   this.proCount < 2 ? this.proCount = 1 : this.proCount--;
+    // },
   },
   filters:{
     priceFormat:function(price){
@@ -153,6 +181,7 @@ export default {
         overflow:hidden;
         padding:15px 0;
         border-top:1px solid #eeeeee;
+        position:relative;
         .cart-check{
           width:15%;
           float:left;
@@ -181,6 +210,9 @@ export default {
               color:#f87300;
               margin-right:10px;
             }
+            .sp-spec{
+              margin-right:5px;
+            }
           }
         }
         .cart-num{
@@ -190,8 +222,8 @@ export default {
           margin-right:15px;
         }
         .cart-edit{
-          margin-top:25px;
-          margin-right:15px;
+          margin-top:18px;
+          margin-right:10px;
           input{
             font-size:12px;
             margin:0;
@@ -210,6 +242,29 @@ export default {
             border-top:1px solid #cccccc;
             border-bottom:1px solid #cccccc;
           }
+          input[type="button"].ipt-ok{
+            width:36px;
+            margin-left:5px;
+            border:1px solid #ff0000;
+            color:#ff0000;
+            border-radius:6px;
+            background:none;
+            font-size:8px;
+          }
+        }
+        .delete-btn{
+          width:36px;
+          height:18px;
+          border-radius:6px;
+          border:1px solid #ff0000;
+          color:#ff0000;
+          line-height:18px;
+          font-size:10px;
+          text-align:center;
+          position:absolute;
+          right:10px;
+          bottom:15px;
+          letter-spacing:1px;
         }
       }
     }
