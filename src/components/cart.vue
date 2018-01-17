@@ -62,10 +62,10 @@
         <span>全选</span>
       </div>
       <div class="count-num">
-        合计:<span>￥1000</span>
+        合计:<span>{{countNum | priceFormat}}</span>
       </div>
       <div class="count-total">
-        结算(<span>10</span>)
+        结算(<span>{{countTotal}}</span>)
       </div>
     </div>
   </div>
@@ -79,7 +79,9 @@ export default {
     return {
       cartMsg:null,
       proCount:1,
-      isShow:true
+      isShow:true,
+      countNum:0,
+      countTotal:0
     }
   },
   created:function(){ 
@@ -123,7 +125,7 @@ export default {
     // },
     // subtractNum:function(){
     //   this.proCount < 2 ? this.proCount = 1 : this.proCount--;
-    // },
+    // }
   },
   filters:{
     priceFormat:function(price){

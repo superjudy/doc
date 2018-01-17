@@ -6,8 +6,8 @@
       <ul>
           <li>
             <router-link to="/index/home">
-              <i class="iconfont active">&#xe601;</i>
-              <p class="active">主页</p>
+              <i class="iconfont">&#xe601;</i>
+              <p class="">主页</p>
             </router-link>
           </li>
           <li>
@@ -102,6 +102,12 @@ export default {
                 color:#f87205;
             }
         }
+    }
+    .router-link-active{
+      color:#f87205;
+      p{
+        color:#f87205;
+      }
     }
 }
 </style>
