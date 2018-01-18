@@ -16,7 +16,7 @@
         <ul  v-if="cartMsg.length">
           <li v-for="(v,index) in cartMsg" :key="v.index">
             <div class="cart-check">
-              <input type="checkbox" @click="selectPro(index)"/>
+              <input type="checkbox" v-model="v.checked" @click="selectPro(index)"/>
             </div>
             <div class="cart-img">
               <img :src="v.imgSrc"/>
@@ -25,8 +25,10 @@
               <p class="p-title">{{v.title}}</p>
               <p class="p-info">
                 <span class="sp-price">{{v.price | cartPriceFormat}}</span>
+              </p>
+              <p>
                 <span class="sp-spec">{{v.ram}}</span>
-                <span class="sp-spec">{{v.color}}</span>
+                <span class="sp-spec">{{v.color}}</span>   
               </p>
             </div>
             <div class="cart-num" v-if="v.isShow" @click="changeProNum(index)">
@@ -58,8 +60,8 @@
 
     <div class="cart-count">
       <div class="count-check">
-        <input type="checkbox" @click="selectAll()"/>
-        <span>全选</span>
+        <input type="checkbox" id="all" v-model="allChecked" @click="selectAll()"/>
+        <label for="all">全选</label>
       </div>
       <div class="count-num">
         合计:<span>{{countNum | cartPriceFormat}}</span>
@@ -82,8 +84,6 @@ export default {
       isShow:true,
       countNum:0,
       countTotal:0,
-      item:null,
-      checked:true,
       allChecked:true
     }
   },
@@ -124,27 +124,27 @@ export default {
       }
     },
     selectPro:function(index){
-      for(var i=0;i<this.cartMsg.length;i++){
+      var self = this;
+      for(var i=0;i<self.cartMsg.length;i++){
         if(i == index){
-          this.cartMsg[i].checked = !this.cartMsg[i].checked;
-          console.log(this.cartMsg[i].checked);
+          self.cartMsg[i].checked = !self.cartMsg[i].checked;
+          if(!self.cartMsg[i].checked){
+            self.allChecked = false;
+          }
+          console.log(self.cartMsg[i].checked);
         }
+        
       }
     },
-    // selectPro:function(item){
-    //   if(typeof item.checked == 'undefined'){
-    //     this.$set(item,"checked",true);
-    //   }else{
-    //     item.checked = !item.checked;
-    //   }
-    // }
     selectAll:function(){
-      if(this.allChecked){
-        for(var i=0;i<this.cartMsg.length;i++){
-          this.cartMsg[i].checked == true;
-          console.log(i,this.cartMsg[i].checked);
-
-        }
+      if(!this.allChecked){
+        this.cartMsg.forEach(function(e,i) {
+          e.checked = true;
+        });
+      }else{
+        this.cartMsg.forEach(function(e,i) {
+          e.checked = false;
+        });
       }
       this.allChecked = !this.allChecked;
     }
@@ -197,8 +197,16 @@ export default {
     }
   }
   .cart-bg{
+    width:100%;
+    position:absolute;
+    top:40px;
+    left:0;
+    bottom:88px;
+    overflow: hidden;
+    overflow-y:scroll;
     ul{
       width:100%;
+      height:100%;
       border-bottom:1px solid #eeeeee;
       li{
         width:100%;

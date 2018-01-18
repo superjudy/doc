@@ -102,14 +102,17 @@ export default {
       this.proCount < 2 ? this.proCount = 1 : this.proCount--;
     },
     addCart:function(str){
-      var goods = {};
-      goods.title = this.proMsg.title;
-      goods.price = this.proMsg.price;
-      goods.proCount = this.proCount;
-      goods.imgSrc = this.proMsg.imgSrc;
-      goods.color = this.colorName;
-      goods.ram = this.ramName;
-      goods.isShow = true;
+      var goods = {
+        title: this.proMsg.title,
+        price: this.proMsg.price,
+        proCount: this.proCount,
+        imgSrc: this.proMsg.imgSrc,
+        color: this.colorName,
+        ram: this.ramName,
+        isShow: true,
+        checked: false
+      };
+      
       this.$store.state.goodsCar.push(goods);
 
       this.$router.push({
