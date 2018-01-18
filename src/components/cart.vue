@@ -16,7 +16,7 @@
         <ul  v-if="cartMsg.length">
           <li v-for="(v,index) in cartMsg" :key="v.index">
             <div class="cart-check">
-              <input type="radio"/>
+              <input type="checkbox" @click="selectPro(index)"/>
             </div>
             <div class="cart-img">
               <img :src="v.imgSrc"/>
@@ -24,7 +24,7 @@
             <div class="cart-info">
               <p class="p-title">{{v.title}}</p>
               <p class="p-info">
-                <span class="sp-price">{{v.price | priceFormat}}</span>
+                <span class="sp-price">{{v.price | cartPriceFormat}}</span>
                 <span class="sp-spec">{{v.ram}}</span>
                 <span class="sp-spec">{{v.color}}</span>
               </p>
@@ -58,11 +58,11 @@
 
     <div class="cart-count">
       <div class="count-check">
-        <input type="radio"/>
+        <input type="checkbox" @click="selectAll()"/>
         <span>全选</span>
       </div>
       <div class="count-num">
-        合计:<span>{{countNum | priceFormat}}</span>
+        合计:<span>{{countNum | cartPriceFormat}}</span>
       </div>
       <div class="count-total">
         结算(<span>{{countTotal}}</span>)
@@ -81,7 +81,10 @@ export default {
       proCount:1,
       isShow:true,
       countNum:0,
-      countTotal:0
+      countTotal:0,
+      item:null,
+      checked:true,
+      allChecked:true
     }
   },
   created:function(){ 
@@ -119,17 +122,36 @@ export default {
           this.cartMsg.splice(index,1);
         }
       }
-    }
-    // addNum:function(){
-    //   this.proCount++;
-    // },
-    // subtractNum:function(){
-    //   this.proCount < 2 ? this.proCount = 1 : this.proCount--;
+    },
+    selectPro:function(index){
+      for(var i=0;i<this.cartMsg.length;i++){
+        if(i == index){
+          this.cartMsg[i].checked = !this.cartMsg[i].checked;
+          console.log(this.cartMsg[i].checked);
+        }
+      }
+    },
+    // selectPro:function(item){
+    //   if(typeof item.checked == 'undefined'){
+    //     this.$set(item,"checked",true);
+    //   }else{
+    //     item.checked = !item.checked;
+    //   }
     // }
+    selectAll:function(){
+      if(this.allChecked){
+        for(var i=0;i<this.cartMsg.length;i++){
+          this.cartMsg[i].checked == true;
+          console.log(i,this.cartMsg[i].checked);
+
+        }
+      }
+      this.allChecked = !this.allChecked;
+    }
   },
   filters:{
-    priceFormat:function(price){
-      return '￥' + price;
+    cartPriceFormat:function(price){
+      return '￥' + price.toFixed(2);
     }
   },
   components:{
