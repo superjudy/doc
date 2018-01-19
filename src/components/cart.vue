@@ -133,7 +133,6 @@ export default {
           }
           console.log(self.cartMsg[i].checked);
         }
-        
       }
     },
     selectAll:function(){
@@ -254,8 +253,11 @@ export default {
           margin-right:15px;
         }
         .cart-edit{
+          width:110px;
+          float:right;
           margin-top:18px;
           margin-right:10px;
+          overflow:hidden;
           input{
             font-size:12px;
             margin:0;
