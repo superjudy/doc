@@ -13,30 +13,30 @@
     <div class="mine-bd">
       <ul>
         <li>账户与安全
-          <span>&gt;</span>
+          <span></span>
         </li>
         <li>我的收货地址
-          <span>&gt;</span>
+          <span></span>
         </li>
         <li>地区设置
-          <span>&gt;</span>
+          <span></span>
         </li>
         <li>隐私
-          <span>&gt;</span>
+          <span></span>
         </li>
         <li>通用
-          <span>&gt;</span>
+          <span></span>
         </li>
       </ul>
       <ul class="ul2">
         <li>通知
-          <span>&gt;</span>
+          <span></span>
         </li>
         <li>关于mi
-          <span>&gt;</span>
+          <span></span>
         </li>
         <li>我的客服
-          <span>&gt;</span>
+          <span></span>
         </li>
       </ul>
     </div>
@@ -125,8 +125,13 @@ export default {
         color:#333333;
         span{
           float:right;
-          font-size:16px;
-          color:#999999;
+          width:6px;
+          height:6px;
+          display:inline-block;
+          border-bottom:1px solid #cccccc;
+          border-right:1px solid #cccccc;
+          transform:rotate(-45deg);
+          -webkit-transform:rotate(-45deg);
         }
       }
     }

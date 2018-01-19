@@ -23,8 +23,13 @@
             </div>
             <div class="cart-info">
               <p class="p-title">{{v.title}}</p>
+              <!-- 
               <p class="p-info">
                 <span class="sp-price">{{v.price | cartPriceFormat}}</span>
+              </p>
+              -->
+              <p class="p-info">
+                <span class="sp-price">{{v.price*v.proCount | cartPriceFormat}}</span>
               </p>
               <p>
                 <span class="sp-spec">{{v.ram}}</span>
@@ -64,10 +69,7 @@
         <label for="all">全选</label>
       </div>
       <div class="count-num">
-        合计:<span>{{countNum | cartPriceFormat}}</span>
-      </div>
-      <div class="count-total">
-        结算(<span>{{countTotal}}</span>)
+        合计:<span>{{countNumber | cartPriceFormat}}</span>
       </div>
     </div>
   </div>
@@ -82,9 +84,8 @@ export default {
       cartMsg:null,
       proCount:1,
       isShow:true,
-      countNum:0,
-      countTotal:0,
-      allChecked:true
+      countNumber:0,
+      allChecked:false
     }
   },
   created:function(){ 
@@ -115,6 +116,7 @@ export default {
           this.cartMsg[i].proCount < 2 ? this.cartMsg[i].proCount = 1 : this.cartMsg[i].proCount--;
         }
       }
+      this.changeNum();
     },
     deletePro:function(index){
       for(var i=0;i<this.cartMsg.length;i++){
@@ -131,8 +133,8 @@ export default {
           if(!self.cartMsg[i].checked){
             self.allChecked = false;
           }
-          console.log(self.cartMsg[i].checked);
         }
+        this.countNum();
       }
     },
     selectAll:function(){
@@ -146,6 +148,14 @@ export default {
         });
       }
       this.allChecked = !this.allChecked;
+      this.countNum();
+    },
+    countNum:function(){
+      var _this = this;
+      this.countNumber = 0;
+      this.cartMsg.forEach(function(e,i){
+        _this.countNumber += e.price * e.proCount;
+      });
     }
   },
   filters:{
@@ -239,7 +249,7 @@ export default {
             margin-top:5px;
             .sp-price{
               color:#f87300;
-              margin-right:10px;
+              margin-right:5px;
             }
             .sp-spec{
               margin-right:5px;
@@ -253,7 +263,7 @@ export default {
           margin-right:15px;
         }
         .cart-edit{
-          width:110px;
+          width:100px;
           float:right;
           margin-top:18px;
           margin-right:10px;
@@ -332,19 +342,14 @@ export default {
     }
     .count-num{
       width:62%;
-      float:left;
+      float:right;
       text-align:right;
+      margin-right:20px;
       span{
         color:#f87300;
         display:inline-block;
         margin-left:10px;
       }
-    }
-    .count-total{
-      float:right;
-      width:20%;
-      background:#f87300;
-      color:#ffffff;
     }
   }
 }
