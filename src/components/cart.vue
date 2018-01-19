@@ -116,7 +116,8 @@ export default {
           this.cartMsg[i].proCount < 2 ? this.cartMsg[i].proCount = 1 : this.cartMsg[i].proCount--;
         }
       }
-      this.changeNum();
+      console.log(this.proCount);
+      this.countNum();
     },
     deletePro:function(index){
       for(var i=0;i<this.cartMsg.length;i++){
