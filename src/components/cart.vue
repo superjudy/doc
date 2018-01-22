@@ -99,7 +99,7 @@ export default {
       // let routerParams = this.$route.query;
       // this.cartMsg = routerParams;
       this.cartMsg = this.$store.state.goodsCar;
-      console.log(this.cartMsg);
+      // console.log(this.cartMsg);
     },
     changeProNum:function(index){
       for(var i=0;i<this.cartMsg.length;i++){

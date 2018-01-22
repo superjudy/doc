@@ -21,6 +21,7 @@ export default new Router({
       path: '/index',
       name: 'index',
       component: index,
+      
       children: [ 
     　　　{ 
             path: 'home',
@@ -49,6 +50,10 @@ export default new Router({
       path:'/productDetial',
       name:productDetial,
       component:productDetial
+    },
+    {
+      path:'*',
+      redirect:'/'
     }
   ],
   mode: 'history'

@@ -6,7 +6,19 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  components:{
+  },
+  created:function(){ 
+    this.rou();
+  },  
+  methods:{
+    rou:function(){
+      this.$router.push({
+        path:'/index/home'
+      });
+    }
+  }
 }
 </script>
 
