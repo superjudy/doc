@@ -13,10 +13,8 @@ git clone https://github.com/superjudy/millet.git
 
 * vue.js 2.0
 * vue-cli
-* webpack
 * vue-router
 * vuex
-* npm
 * vue-swiper
 * less
 * iconfont
