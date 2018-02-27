@@ -14,32 +14,28 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: index
+      name: 'home',
+      component: home
     },
     {
-      path: '/index',
-      name: 'index',
-      component: index,
-      
-      children: [ 
-    　　　{ 
-            path: 'home',
-            component: home
-    　　  },
-          { 
-      　　　　path: 'cart', 
-        　　　component: cart 
-      　　 },
-          {
-            path:'classify',
-            component:classify
-          },
-          {
-            path:'mine',
-            component:mine
-          }
-    　　]
+      path: '/home',
+      name: 'home',
+      component: home
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: cart
+    },
+    {
+      path: '/classify',
+      name: 'classify',
+      component: classify
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: mine
     },
     {
       path:'/search',
@@ -50,10 +46,6 @@ export default new Router({
       path:'/productDetial',
       name:productDetial,
       component:productDetial
-    },
-    {
-      path:'*',
-      redirect:'/'
     }
   ],
   mode: 'history'

@@ -116,7 +116,7 @@ export default {
       this.$store.state.goodsCar.push(goods);
 
       this.$router.push({
-        path:'/index/cart',
+        path:'/cart',
         query:str
       });
     }

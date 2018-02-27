@@ -1,42 +1,52 @@
 <template>
-  <div class="index">
-    <home></home>
+  <div class="foot">
+    <!-- footer part -->
+    <div class="mi-footer">
+      <ul>
+          <li>
+            <router-link to="/home">
+              <i class="iconfont">&#xe601;</i>
+              <p class="">主页</p>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/classify">
+              <i class="iconfont">&#xe604;</i>
+              <p>分类</p>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/cart">
+              <i class="iconfont">&#xe602;</i>
+              <p>购物车</p>
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/mine">
+              <i class="iconfont">&#xe603;</i>
+              <p>我的</p>
+            </router-link>
+          </li>
+      </ul>
+    </div>
   </div>
 </template>
 
-<script>
-import home from './home'; 
+<script> 
 import data from "../data.json";
 export default {
-  name: 'index',
+  name: 'foot',
   data () {
     return {
     }
   },
   components:{
-    'home': home 
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
- .index{
-   width: 100%;
-   height:100%;
-   overflow:hidden;
-   position:relative;
-   .banner-bg{
-     width:100%;
-     height:100%;
-     padding:40px 0 46px;
-     position:absolute;
-     top:0px;
-     bottom:0px;
-     left:0;
-     overflow-y:auto;
-   }
- }
  .mi-footer{
     width:100%;
     height:46px;

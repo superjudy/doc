@@ -1,23 +1,20 @@
 <template>
   <div id="app">
+    <mi-foot></mi-foot>
     <router-view/>
   </div>
 </template>
 
 <script>
+import foot from '@/components/foot'; 
 export default {
   name: 'app',
   components:{
+    'mi-foot':foot
   },
   created:function(){ 
-    this.rou();
   },  
   methods:{
-    rou:function(){
-      this.$router.push({
-        path:'/index/home'
-      });
-    }
   }
 }
 </script>

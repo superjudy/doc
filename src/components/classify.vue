@@ -134,7 +134,6 @@ export default {
       overflow-y:auto;
       li{
         width:17%;
-        height:3.75rem;
         margin:10px 1.5%;
         float:left;
         border-radius:10px;
