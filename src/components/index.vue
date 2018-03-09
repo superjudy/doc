@@ -1,20 +1,46 @@
 <template>
   <div class="index">
-    <home></home>
+    <!-- <home></home> -->
+    <ul class="stack">
+      <li v-for="(val,index) in pages" 
+          class="stack-item" 
+          :style="[transform(index)]">
+        <img :src="val.imgSrc"/>
+      </li>
+    </ul>
+    <div class="btn-enter" @click="enterBtn">立即进入</div>
   </div>
 </template>
 
 <script>
-import home from './home'; 
+//import home from './home'; 
 import data from "../data.json";
 export default {
   name: 'index',
   data () {
     return {
+      pages:null,
+      currentPage:0,
+      opacity:1,
+      zIndex:10,
+      visible:3
     }
   },
+  created:function(){  
+    this.pages = data.newGoods.newGoodsList;
+  },
   components:{
-    'home': home 
+   // 'home': home 
+  },
+  methods:{
+    enterBtn:function(){
+      this.$router.push({
+          path:'/home',
+      })
+    },
+    transform:function(index){
+      
+    }
   }
 }
 </script>
@@ -24,60 +50,46 @@ export default {
  .index{
    width: 100%;
    height:100%;
+   background:#565e77;
    overflow:hidden;
    position:relative;
-   .banner-bg{
-     width:100%;
-     height:100%;
-     padding:40px 0 46px;
-     position:absolute;
-     top:0px;
-     bottom:0px;
-     left:0;
-     overflow-y:auto;
-   }
- }
- .mi-footer{
-    width:100%;
-    height:46px;
-    background:#ffffff;
-    position:fixed;
-    left:0;
-    bottom:0;
-    z-index:999;
-    border-top:1px solid #f4f4f4;
-    ul{
-        overflow:hidden;
-        li{
-            width:25%;
-            float:left;
-            text-align:center;
-            cursor:pointer;
-            margin-top: 5px;
-            img{
-                width:22%;
-                margin-top:5px;
-                display:inline-block;
-            }
-            i{
-              display: block;
-              font-size:18px;
-            }
-            p{
-                font-size:10px;
-                color:#a6a6a6;
-                margin-top:5px;
-            }
-            .active{
-                color:#f87205;
-            }
+   .stack{
+     width:14rem;
+     height:14rem;
+     position:relative;
+     overflow:hidden;
+     margin:130px auto 0;
+     padding:0;
+     perspective: 1000px;
+     perspective-origin: 50% 150%;
+     -webkit-perspective: 1000px;
+     -webkit-perspective-origin: 50% 150%;
+     .stack-item{
+        height: 14rem;
+        width: 14rem;
+        border-radius: 4px;
+        text-align: center;
+        overflow: hidden;
+        img{
+          width: 100%;
+          display: block;
+          pointer-events: none;
         }
-    }
-    .router-link-active{
-      color:#f87205;
-      p{
-        color:#f87205;
-      }
-    }
-}
+     }
+   }
+  .btn-enter{
+    width:14rem;
+    height:40px;
+    background:#f8f8f8;
+    color:#565e77;
+    line-height:40px;
+    font-weight:bold;
+    letter-spacing:2px;
+    font-size:1.1rem;
+    border-radius: 4px;
+    margin:80px auto 0;
+    box-shadow: 2px 3px 5px #888888;
+    cursor:pointer;
+  }
+ }
 </style>
