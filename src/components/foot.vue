@@ -16,7 +16,7 @@
             </router-link>
           </li>
           <li>
-            <router-link to="/cart">
+            <router-link to="/cartcartNew">
               <i class="iconfont">&#xe602;</i>
               <p>购物车</p>
             </router-link>
