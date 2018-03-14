@@ -54,9 +54,7 @@
                 </div>
             </div>
 
-            <div class="delete-bck" @click="deletePro(index)">
-                删除
-            </div>
+            <div class="delete-bck" @click="deletePro(index)">删除</div>
           </li>
          
         </ul>
@@ -93,11 +91,19 @@ export default {
       countNumber:0,
       allChecked:false,
       startX : 0,
-	  endX : 0,
+	    endX : 0,
     }
   },
   created:function(){ 
     this.param();
+
+    //在页面加载时读取localStorage里的状态信息
+    // localStorage.getItem("cartMsg") && this.$store.replaceState(JSON.parse(localStorage.getItem("cartMsg")));
+    
+    //在页面刷新时将vuex里的信息保存到localStorage里
+    // window.addEventListener("beforeunload",()=>{
+    //     localStorage.setItem("cartMsg",JSON.stringify(this.$store.state));
+    // });
   },  
   methods:{
     backLastPage:function(){
@@ -166,42 +172,42 @@ export default {
         _this.countNumber += e.price * e.proCount;
       });
     },
-	skip:function(){
-		if( this.checkSlide() ){
-			this.restSlide();
-        }
-	},
-	touchStart:function(e){
-		this.startX = e.touches[0].clientX;
-	},
-	touchEnd:function(e){
-		let parentElement = e.currentTarget.parentElement;
-		this.endX = e.changedTouches[0].clientX;
-        // 左滑
-		if( parentElement.dataset.type == 0 && this.startX - this.endX > 30  ){
-			this.restSlide();
-			parentElement.dataset.type = 1;
-		}
-        // 右滑
-		if( parentElement.dataset.type == 1 && this.startX - this.endX < -30 ){
-			this.restSlide();
-			parentElement.dataset.type = 0;
-		}
-		this.startX = 0;
-		this.endX = 0;
-		},
-        checkSlide:function(){
+    skip:function(){
+      if( this.checkSlide() ){
+        this.restSlide();
+      }
+    },
+    touchStart:function(e){
+      this.startX = e.touches[0].clientX;
+    },
+    touchEnd:function(e){
+      let parentElement = e.currentTarget.parentElement;
+      this.endX = e.changedTouches[0].clientX;
+      // 左滑
+      if( parentElement.dataset.type == 0 && this.startX - this.endX > 30  ){
+        this.restSlide();
+        parentElement.dataset.type = 1;
+      }
+      // 右滑
+      if( parentElement.dataset.type == 1 && this.startX - this.endX < -30 ){
+        this.restSlide();
+        parentElement.dataset.type = 0;
+      }
+      this.startX = 0;
+      this.endX = 0;
+    },
+    checkSlide:function(){
 			let listItems = document.querySelectorAll('.list-item');
-			for( let i = 0 ; i < listItems.length ; i++){
+			for( let i = 0; i < listItems.length; i++){
 				if( listItems[i].dataset.type == 1 ) {
 					return true;
-                }
+        }
 			}
 			return false;
-        },
+    },
 		restSlide:function(){
 			let listItems = document.querySelectorAll('.list-item');
-			for( let i = 0 ; i < listItems.length ; i++){
+			for( let i = 0; i < listItems.length; i++){
 				listItems[i].dataset.type = 0;
 			}
 		}
@@ -341,20 +347,6 @@ export default {
             font-size:8px;
           }
         }
-        .delete-btn{
-          width:36px;
-          height:18px;
-          border-radius:6px;
-          border:1px solid #ff0000;
-          color:#ff0000;
-          line-height:18px;
-          font-size:10px;
-          text-align:center;
-          position:absolute;
-          right:10px;
-          bottom:15px;
-          letter-spacing:1px;
-        }
       }
     }
     ul:last-child{
@@ -408,7 +400,7 @@ export default {
     transform: translate3d(0,0,0);
 }
 .list-item[data-type="1"]{
-    transform: translate3d(-3rem,0,0);
+    transform: translate3d(-3.6rem,0,0);
 }
 .list-item:after{
     content: " ";
@@ -439,17 +431,18 @@ export default {
     font-size: 0;
 }
 .delete-bck{
-    width: 3rem;
+    width: 3.6rem;
     height: 4rem;
     background: #ff4949;
-    font-size: 12px;
+    font-size: 14px;
     color: #fff;
     text-align: center;
     line-height: 4rem;
     position: absolute;
     top:-1px;
-    right:-3rem;
+    right:-3.6rem;
     z-index:999999;
     padding:0.3rem 0;
+    letter-spacing:2px;
 }
 </style>
