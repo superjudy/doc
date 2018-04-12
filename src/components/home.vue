@@ -45,7 +45,7 @@ export default {
    width: 100%;
    height:100%;
    overflow:hidden;
-   postion:relative;
+   position:relative;
    .banner-bg{
      width:100%;
      height:100%;

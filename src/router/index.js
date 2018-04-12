@@ -7,7 +7,7 @@ import cart from '@/components/cart'
 import mine from '@/components/mine'
 import classify from '@/components/classify'
 import productDetial from '@/components/productDetial'
-import cartNew from '@/components/cartNew'
+import login from '@/components/login'
 
 Vue.use(Router)
 
@@ -15,8 +15,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: index
+      component: home
     },
     {
       path: '/home',
@@ -24,9 +23,9 @@ export default new Router({
       component: home
     },
     {
-      path: '/cartNew',
-      name: 'cartNew',
-      component: cartNew
+      path: '/cart',
+      name: 'cart',
+      component: cart
     },
     {
       path: '/classify',
@@ -47,6 +46,11 @@ export default new Router({
       path:'/productDetial',
       name:productDetial,
       component:productDetial
+    },
+    {
+      path:'/login',
+      name:login,
+      component:login
     }
   ],
   mode: 'history'

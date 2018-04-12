@@ -3,30 +3,22 @@
     <!-- footer part -->
     <div class="mi-footer">
       <ul>
-          <li>
-            <router-link to="/home">
-              <i class="iconfont">&#xe601;</i>
-              <p class="">主页</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/classify">
-              <i class="iconfont">&#xe604;</i>
-              <p>分类</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/cartNew">
-              <i class="iconfont">&#xe602;</i>
-              <p>购物车</p>
-            </router-link>
-          </li>
-          <li>
-            <router-link to="/mine">
-              <i class="iconfont">&#xe603;</i>
-              <p>我的</p>
-            </router-link>
-          </li>
+        <router-link to="/home" tag="li">
+          <i class="iconfont">&#xe601;</i>
+          <p class="">主页</p>
+        </router-link>
+        <router-link to="/classify" tag="li">
+          <i class="iconfont">&#xe604;</i>
+          <p>分类</p>
+        </router-link>
+        <router-link to="/cart" tag="li">
+          <i class="iconfont">&#xe602;</i>
+          <p>购物车</p>
+        </router-link>
+        <router-link to="/mine" tag="li">
+          <i class="iconfont">&#xe603;</i>
+          <p>我的</p>
+        </router-link>
       </ul>
     </div>
   </div>
