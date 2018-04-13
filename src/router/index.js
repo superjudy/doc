@@ -1,18 +1,22 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index'
-import search from '@/components/search'
-import home from '@/components/home'
-import cart from '@/components/cart'
-import mine from '@/components/mine'
-import classify from '@/components/classify'
-import productDetial from '@/components/productDetial'
-import login from '@/components/login'
+
+const search = () => import('@/components/search');
+const home = () => import('@/components/home');
+const cart = () => import('@/components/cart');
+const mine = () => import('@/components/mine');
+const classify = () => import('@/components/classify');
+const productDetial = () => import('@/components/productDetial');
+const login = () => import('@/components/login');
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
+    {
+      path:'*',
+      redirect:'/home'
+    },
     {
       path: '/',
       component: home
@@ -25,7 +29,10 @@ export default new Router({
     {
       path: '/cart',
       name: 'cart',
-      component: cart
+      component: cart,
+      meta:{
+        login:false
+      }
     },
     {
       path: '/classify',
@@ -55,3 +62,18 @@ export default new Router({
   ],
   mode: 'history'
 })
+
+// router.beforeEach((to,from,next) => {
+//   if(to.matched.some((item) => item.meta.login)){
+//     let intro = router.app.$local.fetch("miPre")
+//     if(intro.login){
+//       next();
+//     }else{
+//       router.push({
+//         path:'/login'
+//       })
+//     }
+//   }  
+// })
+
+export default router

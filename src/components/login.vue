@@ -1,11 +1,16 @@
 <template>
   <div class="login">
     <div class="login-mi">mi</div>
-    <div class="login-form">
-        <input type="text" placeholder="请输入用户名"/>
-        <input type="text" placeholder="请输入密码"/>
-        <button @click="backToMine">登 录</button>
-    </div>
+    <form class="login-form" @submit.prevent="sendLogin">
+        <input type="text" placeholder="请输入用户名" ref="username"/>
+        <input type="text" placeholder="请输入密码" ref="pwd"/>
+        <p v-if="isShow" class="is-show">请正确填写用户名和密码！</p>
+        <button>登 录</button>
+    </form>
+    <router-link to="/home" tag="div" >返回首页</router-link>
+
+    
+
   </div>
 </template>
 
@@ -15,16 +20,27 @@ export default {
   name: 'login',
   data () {
     return {
+        isShow:false
     }
   },  
   created:function(){  
    
   },  
   methods:{
-      backToMine(){
-          this.$router.push({
-              path:"/mine"
-          })
+      sendLogin(){
+          let userName = this.$refs.username.value;
+          let pwd = this.$refs.pwd.value;
+          if(userName && pwd){
+            this.$local.save('miPre',{
+              login:true,
+              userName:userName
+            });
+            this.$router.push({
+              path:'/mine'
+            })
+          }else{
+              this.isShow = true;
+          } 
       }
   }  
 }
@@ -79,6 +95,17 @@ export default {
             color:#fff;
             font-size:16px;
         }
+        p{
+            width:77%;
+            margin:5px auto 0;
+            text-align:left;
+            font-size:14px;
+            color:red;
+        }
     }
+}
+.login div:last-child{
+    margin-top:20px;
+    color:#f87205;
 }
 </style>

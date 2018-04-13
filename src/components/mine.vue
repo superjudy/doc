@@ -3,14 +3,14 @@
     <!-- top info part -->
     <div class="mine-top">
       <div class="bg bg-blur"></div>
-      <div style="display:none;">
-        <div class="top-info">
+      <div>
+        <div class="top-info" v-if="isLogin">
           <img src="https://i8.mifile.cn/v1/a1/ecb64c5e-9741-1535-dab6-28d47e2b0d10.webp?width=360&height=360"/>
-          <p>my_nickname</p>
+          <p>{{userName}}</p>
         </div>
-      </div>
-      <div class="top-info">
-        <button @click="toLogin">登 录</button>
+        <router-link class="top-info" to="/login" tag="div" v-if="!isLogin">
+          <button>登 录</button>
+        </router-link>
       </div>
     </div>
 
@@ -20,9 +20,6 @@
           <span></span>
         </li>
         <li>我的收货地址
-          <span></span>
-        </li>
-        <li>地区设置
           <span></span>
         </li>
         <li>隐私
@@ -44,6 +41,9 @@
         </li>
       </ul>
     </div>
+
+    <div class="loginOut" @click="signOut">注 销</div>
+
   </div>
 </template>
 
@@ -53,14 +53,22 @@ export default {
   name: 'mine',
   data () {
     return {
+      isLogin:false,
+      userName:''
     }
+  },
+  created(){
+    let info = this.$local.fetch('miPre');
+    this.isLogin = info.login;
+    this.userName = info.userName;
   },
   components:{
   },
   methods:{
-    toLogin(){
+    signOut(){
+      this.$local.save('miPre',null);
       this.$router.push({
-        path:"/login"
+        path:'/login'
       })
     }
   }
@@ -74,6 +82,7 @@ export default {
   height:100%;
   background:#f4f4f4;
   position:relative;
+  overflow:auto;
   .mine-top{
      width:100%;
      height:12rem;
@@ -162,6 +171,16 @@ export default {
       margin-top:20px;
     }
   }
-
+  .loginOut{
+    width:80%;
+    height:40px;
+    margin:15px auto 60px;
+    line-height:40px;
+    background:#f87205;
+    border-radius:8px;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+  }
 }
 </style>

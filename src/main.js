@@ -10,6 +10,14 @@ import Vuex from 'vuex'
 import store from './vuex/store'
 import "./components/common/style/reset.css";
 import "./components/common/fonts/font.css";
+import Axios from 'axios'
+import VueAxios from 'vue-axios'
+
+import utils from './assets/js/utils.js'
+Vue.use(utils);
+
+Vue.use(VueAxios,Axios);
+
 Vue.use(Vuex);
 
 Vue.use(Mint);

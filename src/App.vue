@@ -2,7 +2,7 @@
   <div id="app">
     <mi-foot></mi-foot>
     <transition name="left">
-      <router-view/>
+      <router-view class="app-main"/>
     </transition>
     
   </div>
@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less" scoped>
 #app {
   width:100%;
   height:100%;
@@ -33,30 +33,20 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+.app-main{
+  width:100%;
+  height:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
 .left-enter{
   transform:translateX(100%);
-  opacity:0;
 }
-.left-enter-to{
-  transform:translateX(0);
-  opacity:1;
-}
-.left-leave{
-  transform:translateX(0);
+.left-enter-active,.left-leave-active {
+  transition: all 1s;
 }
 .left-leave-to{
   transform:translateX(-100%);
 }
-.left-enter-active,.left-leave-active {
-  transition: all 1s ease;
-}/*
-.left-enter{
-  transform:translateX(-100%);
-}
-.left-enter-active,.left-leave-active {
-  transition: all 1s ease;
-}
-.left-leave-to{
-  transform:translateX(100%);
-}*/
 </style>

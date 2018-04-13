@@ -58,11 +58,17 @@ export default {
       classifyGoods3:null
     }
   },
+  computed:{
+    data(){
+      return this.$store.state.list;
+    }
+  },
   created:function(){
     this.classifyGoods = data.newHomeGoods.newHomeGoodsList;
     this.classifyGoods1 = data.starGoods.starGoodsList;
     this.classifyGoods2 = data.newGoods.newGoodsList;
     this.classifyGoods3 = data.intelligenceGoods.intelligenceGoodsList;
+    this.$store.dispatch('getData');
   },
   methods:{
     backLastPage:function(){
