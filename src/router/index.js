@@ -15,16 +15,25 @@ let router = new Router({
   routes: [
     {
       path:'*',
-      redirect:'/home'
+      redirect:'/home',
+      meta:{
+        login:true
+      }
     },
     {
       path: '/',
-      component: home
+      component: home,
+      meta:{
+        login:true
+      }
     },
     {
       path: '/home',
       name: 'home',
-      component: home
+      component: home,
+      meta:{
+        login:true
+      }
     },
     {
       path: '/cart',
@@ -37,27 +46,42 @@ let router = new Router({
     {
       path: '/classify',
       name: 'classify',
-      component: classify
+      component: classify,
+      meta:{
+        login:true
+      }
     },
     {
       path: '/mine',
       name: 'mine',
-      component: mine
+      component: mine,
+      meta:{
+        login:true
+      }
     },
     {
       path:'/search',
       name:'search',
-      component:search
+      component:search,
+      meta:{
+        login:true
+      }
     },
     {
       path:'/productDetial',
       name:productDetial,
-      component:productDetial
+      component:productDetial,
+      meta:{
+        login:true
+      }
     },
     {
       path:'/login',
       name:login,
-      component:login
+      component:login,
+      meta:{
+        login:true
+      }
     }
   ],
   mode: 'history'
@@ -65,7 +89,8 @@ let router = new Router({
 
 // router.beforeEach((to,from,next) => {
 //   if(to.matched.some((item) => item.meta.login)){
-//     let intro = router.app.$local.fetch("miPre")
+//     let intro = router.app.$local.fetch("miPre");
+//     console.log(intro);
 //     if(intro.login){
 //       next();
 //     }else{
