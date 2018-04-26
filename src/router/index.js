@@ -4,10 +4,13 @@ import Router from 'vue-router'
 const search = () => import('@/components/search');
 const home = () => import('@/components/home');
 const cart = () => import('@/components/cart');
+const cartNew = () => import('@/components/cartNew');
 const mine = () => import('@/components/mine');
 const classify = () => import('@/components/classify');
 const productDetial = () => import('@/components/productDetial');
 const login = () => import('@/components/login');
+const manageAddress = () => import('@/components/manageAddress');
+const addAddress = () => import('@/components/addAddress');
 
 Vue.use(Router)
 
@@ -36,9 +39,9 @@ let router = new Router({
       }
     },
     {
-      path: '/cart',
-      name: 'cart',
-      component: cart,
+      path: '/cartNew',
+      name: 'cartNew',
+      component: cartNew,
       meta:{
         login:false
       }
@@ -81,6 +84,22 @@ let router = new Router({
       component:login,
       meta:{
         login:true
+      }
+    },
+    {
+      path:'/manageAddress',
+      name:manageAddress,
+      component:manageAddress,
+      meta:{
+        login:false
+      }
+    },
+    {
+      path:'/addAddress',
+      name:addAddress,
+      component:addAddress,
+      meta:{
+        login:false
       }
     }
   ],

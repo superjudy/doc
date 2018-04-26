@@ -2,12 +2,9 @@
 
 > vue practise
 
-> 这是借用小米的素材做的练习，之后会继续学习，逐步完善整个项目。
-  本项目仅用于 Vue.js 实战项目的学习，不作为商业用途。
-
 ## 项目地址
 
-git clone https://github.com/superjudy/millet.git
+git clone https://github.com/superjudy/mi.git
 
 ## 项目组成
 
@@ -15,7 +12,7 @@ git clone https://github.com/superjudy/millet.git
 * vue-cli
 * vue-router
 * vuex
-* vue-swiper
+* mint-ui
 * less
 * iconfont
 

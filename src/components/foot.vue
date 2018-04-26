@@ -11,7 +11,7 @@
           <i class="iconfont">&#xe604;</i>
           <p>分类</p>
         </router-link>
-        <router-link to="/cart" tag="li">
+        <router-link to="/cartNew" tag="li">
           <i class="iconfont">&#xe602;</i>
           <p>购物车</p>
         </router-link>

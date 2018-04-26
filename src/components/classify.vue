@@ -108,7 +108,7 @@ export default {
         color:#ffffff;
         font-size:16px;
         line-height:40px;
-        font-weight:blod;
+        font-weight:bold;
         letter-spacing:5px;
       }
       .bar-quit{

@@ -19,9 +19,10 @@
         <li>账户与安全
           <span></span>
         </li>
-        <li>我的收货地址
+        <router-link to="/manageAddress" tag="li">
+          我的收货地址
           <span></span>
-        </li>
+        </router-link>
         <li>隐私
           <span></span>
         </li>
