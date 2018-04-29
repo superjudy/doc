@@ -1,6 +1,24 @@
 <template>
   <div class="man-add">
-    
+    <ul>
+      <li>
+        <p>
+          <span>白玉汤</span>
+          <span>12312312312</span>
+        </p>
+        <p>北京市东城区七侠镇同福客栈</p>
+      </li>
+    </ul>
+    <ul>
+      <li v-for="val in addInfos" :key="val.name">
+        <p>
+          <span>{{val.sName}}</span>
+          <span>{{val.sNumber}}</span>
+        </p>
+        <p>{{val.sDetialAdd}}</p>
+      </li>
+    </ul>
+
     <div class="add-btn">
         <router-link to="/addAddress" tag="button">添加新地址</router-link>
     </div>
@@ -12,13 +30,18 @@ export default {
   name: 'manAdd',
   data () {
     return {
+      addInfos:null
     }
   },
-  created:function(){  
+  created:function(){
+    this.param();
   },
   components:{
   },
   methods:{
+    param:function(){
+      this.addInfos = this.$store.state.addInfos;
+    }
   }
 }
 </script>
@@ -28,6 +51,7 @@ export default {
  .man-add{
      width:100%;
      height:100%;
+     background:#f4f4f4;
      position:relative;
      .add-btn{
          position:fixed;
@@ -50,6 +74,32 @@ export default {
              outline:none;
              cursor:point;
          }
+     }
+     ul{
+       li{
+         width:100%;
+         height:auto;
+         background:#fff;
+         padding:10px 0;
+         overflow:hidden;
+         margin:15px auto;
+         p{
+           width:92%;
+           margin:5px auto;
+           overflow:hidden;
+           font-size:1rem;
+           line-height:1.4rem;
+           span:first-child{
+             float:left;
+           }
+           span:last-child{
+             float:right;
+           }
+         }
+         p:last-child{
+           text-align:left;
+         }
+       }
      }
  }
 </style>

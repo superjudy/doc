@@ -8,7 +8,8 @@ const store = new Vuex.Store({
   // 定义状态
   state: {
     goodsCar: [],
-    list:[]
+    list:[],
+    addInfos:[]
   },
   mutations:{
     changeData(state,list){

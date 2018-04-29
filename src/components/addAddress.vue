@@ -11,29 +11,30 @@
         <ul class="add-body">
             <li>
                 <label for="ipt-name">收件人</label>
-                <input name="ipt-name" type="text"/>
+                <input name="ipt-name" type="text" class="ipt-name"/>
             </li>
             <li>
-                <label for="ipt-name">联系电话</label>
-                <input name="ipt-name" type="text"/>
+                <label for="ipt-number">联系电话</label>
+                <input name="ipt-number" type="text" class="ipt-number" @blur="rightNumber"/>
             </li>
             <li>
-                <label for="ipt-name">所在地区</label>
-                <p @click="popPicker">{{province}} {{city}} {{county}}</p>
+                <label>所在地区</label>
+                <p @click="popPicker" class="sAdd">{{province}} {{city}} {{county}}</p>
             </li>
             <li>
-                <label for="ipt-name">详细地址</label>
-                <input name="ipt-name" type="text"/>
+                <label for="ipt-detial">详细地址</label>
+                <input name="ipt-detial" type="text" class="ipt-detial"/>
             </li>
         </ul>
-        <router-link to="/manageAddress" tag="button">保存</router-link>
+        <!--<router-link to="/manageAddress" tag="button" @click="saveCommit">保存</router-link>-->
+        <button @click="saveCommit">保存</button>
         <mt-picker :slots="slots" @change="onValuesChange" class="mi-picker"></mt-picker>
     </div>
   </div>
 </template>
 
 <script>
-import { Picker } from 'mint-ui';
+import { Picker, Toast } from 'mint-ui';
 import myAddress from "../address.json"
 export default {
   name: 'add-address',
@@ -83,7 +84,7 @@ export default {
       backLastPage:function(){
           this.$router.go(-1);
       },
-      onValuesChange(picker, values) {
+      onValuesChange:function(picker, values) {
         if(myAddress[values[0]]){
             picker.setSlotValues(1,Object.keys(myAddress[values[0]]));
             picker.setSlotValues(2,myAddress[values[0]][values[1]]);
@@ -95,6 +96,33 @@ export default {
       popPicker:function(){
         let popUp = document.querySelector('.mi-picker');
         popUp.style.bottom = "0px"
+      },
+      rightNumber:function(){
+        let sNumber = document.querySelector('.ipt-number').value;
+        if(sNumber.length != 11 || isNaN(sNumber)){
+            Toast('请输入正确的手机号码');
+        }
+      },
+      saveCommit:function(str){
+          let sName = document.querySelector('.ipt-name').value;
+          let sNumber = document.querySelector('.ipt-number').value;
+          let sDetial = document.querySelector('.ipt-detial').value;
+          let sAdd = this.province + this.city + this.county;
+          let sDetialAdd = sAdd + sDetial;
+          let addInfo = {
+              sName : sName,
+              sNumber : sNumber,
+              sDetialAdd :sDetialAdd
+          }
+          this.$store.state.addInfos.push(addInfo);
+          if(sName && sNumber && sDetial){
+              this.$router.push({
+                  path:'/manageAddress',
+                  query:str
+              })
+          }else{
+              Toast('请输入收件人');
+          }
       }
   },
   mounted(){
