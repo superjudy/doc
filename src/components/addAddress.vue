@@ -28,7 +28,10 @@
         </ul>
         <!--<router-link to="/manageAddress" tag="button" @click="saveCommit">保存</router-link>-->
         <button @click="saveCommit">保存</button>
-        <mt-picker :slots="slots" @change="onValuesChange" class="mi-picker"></mt-picker>
+        
+        <mt-popup v-model="popupVisible" position="bottom">
+            <mt-picker :slots="slots" @change="onValuesChange" class="mi-picker"></mt-picker>
+        </mt-popup>
     </div>
   </div>
 </template>
@@ -40,6 +43,7 @@ export default {
   name: 'add-address',
   data () {
     return {
+        popupVisible:true,
         slots: [
             {
                 flex: 1,
@@ -94,8 +98,9 @@ export default {
         }
       },
       popPicker:function(){
-        let popUp = document.querySelector('.mi-picker');
-        popUp.style.bottom = "0px"
+        // let popUp = document.querySelector('.mi-picker');
+        // popUp.style.bottom = "0px"
+        this.popupVisible = true;
       },
       rightNumber:function(){
         let sNumber = document.querySelector('.ipt-number').value;
@@ -224,12 +229,21 @@ export default {
         cursor:point;
     }
     .mi-picker{
-        position:absolute;
-        bottom:-180px;
-        left:0;
-        height:180px;
         width:100%;
-        transition:all 1s;
+        .picker-items{
+            width:100%;
+            dispaly:block;
+            .picker-item{
+                width:31%!important;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            .picker-slot{
+                width:31%!important;
+                float:left;
+            }
+        }
     }
  }
 </style>

@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
-import { Swipe, SwipeItem, Picker, Toast } from 'mint-ui';
+import { Swipe, SwipeItem, Picker, Toast, Popup } from 'mint-ui';
 import Vuex from 'vuex'
 import store from './vuex/store'
 import "./components/common/style/reset.css";
@@ -23,6 +23,7 @@ Vue.use(Vuex);
 Vue.use(Mint);
 Vue.component(Swipe.name, Swipe);
 Vue.component(Picker.name, Picker);
+Vue.component(Popup.name, Popup);
 /* Vue.component(SwipeItem.name, SwipeItem); */
 
 Vue.config.productionTip = false
