@@ -43,7 +43,7 @@ export default {
   name: 'add-address',
   data () {
     return {
-        popupVisible:true,
+        popupVisible:false,
         slots: [
             {
                 flex: 1,
